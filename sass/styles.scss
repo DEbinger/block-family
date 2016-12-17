@@ -1,38 +1,122 @@
 // Resets, Clearfix, etc
+@import './partials/reset';
+@import './partials/clearfix';
 
 // Variables
- 
-// Media Query Ranges 
- 
+$dark-color: #222;
+$light-color: orange;
+$bright-color: white;
+$g-padding: 20px;
+
 // Mixins
 
-// Styles
-body{
-  background-color: orange;
-  text-align: center;
-  color: #EEE;
+@mixin block_font($font-size, $font-color) {
+  font-size: $font-size;
+  color: $font-color;
 }
- 
+
+// Styles
+
+body{
+  background-color: $light-color;
+  color: $light-color;
+  text-align: center;
+}
+
 h1, h2, h3, h4{
   font-family: "Helvetica Neue", "Helvetica", sans-serif;
 }
- 
+
 h1{
   padding: 20px;
+  @include block_font(3.5rem, $dark-color);
 }
- 
+
 h2{
- 
+  @include block_font(2.2rem, $bright-color);
 }
- 
- 
+
 .block_family{
   max-width:350px;
   margin:auto;
 }
- 
+
 .block_family li{
-  background-color: #222;
+  background-color: $dark-color;
+  color: $bright-color;
   margin-bottom: 20px;
   padding: 20px;
+
+}
+
+@media screen and (min-width: 600px){
+  body{
+    background-color: $light-color;
+    color: $light-color;
+    text-align: center;
+  }
+
+  h1{
+    padding: 20px;
+    @include block_font(3.5rem, $bright-color);
+  }
+
+  h2{
+    @include block_font(2.2rem, $light-color);
+  }
+
+
+  .block_family{
+    max-width:500px;
+    margin:auto;
+  }
+
+  .block_family li{
+    background-color: $bright-color;
+    color: $light-color;
+    margin: 0.5%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 48%;
+  }
+
+  .block_family li:nth-child(odd) {
+    background-color: $dark-color;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  body{
+    background-color: $dark-color;
+    text-align: center;
+    color: $light-color;
+  }
+
+  h1{
+    padding: 20px;
+    @include block_font(3.5rem, $light-color);
+  }
+
+  h2{
+    @include block_font(2.2rem, $dark-color);
+  }
+
+  .block_family{
+    max-width:800px;
+    margin:auto;
+  }
+
+  .block_family li{
+    background-color: $light-color;
+    color: $dark-color;
+    margin: 0.5%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 32%;
+  }
+  .block_family li:nth-child(3n+2) {
+    background-color: $bright-color;
+  }
 }
